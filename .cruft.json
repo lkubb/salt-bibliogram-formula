@@ -1,0 +1,48 @@
+{
+  "template": "https://github.com/lkubb/salt-template-formula-compose",
+  "commit": "3bf116fca254f07ebcba5a30fcc5f071472ef84a",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "_extensions": [
+        "local_extensions.YAMLDumper"
+      ],
+      "_jinja2_env_vars": {
+        "block_start_string": "{!",
+        "block_end_string": "!}",
+        "variable_start_string": "{=",
+        "variable_end_string": "=}",
+        "comment_start_string": "{@",
+        "comment_end_string": "@}"
+      },
+      "name": "Bibliogram",
+      "abbr": "bibliogram",
+      "abbr_pysafe": "bibliogram",
+      "project_name": "bibliogram",
+      "containers": "bibliogram",
+      "git_username": "lkubb",
+      "_lookup": {
+        "containers": {
+          "bibliogram": {
+            "image": "quay.io/pussthecatorg/bibliogram:latest"
+          }
+        },
+        "paths": {
+          "config": "config.js",
+          "db": "db"
+        }
+      },
+      "_settings": {
+        "config": {
+          "port": 10407,
+          "tor": {
+            "enabled": false
+          },
+          "website_origin": "http://localhost:10407"
+        }
+      },
+      "_template": "https://github.com/lkubb/salt-template-formula-compose"
+    }
+  },
+  "directory": null
+}

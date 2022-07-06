@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Set default values.
+---
+values:
+  lookup:
+    rootgroup: root
+    compose:
+      create_pod: null
+      pod_args: null
+      project_name: bibliogram
+      remove_orphans: true
+      service:
+        container_prefix: null
+        ephemeral: true
+        pod_prefix: null
+        restart_policy: on-failure
+        separator: null
+        stop_timeout: null
+    paths:
+      base: /opt/containers/bibliogram
+      compose: docker-compose.yml
+      config_bibliogram: bibliogram.env
+      config: config.js
+      db: db
+    user:
+      groups: []
+      home: null
+      name: bibliogram
+      shell: /usr/sbin/nologin
+      uid: null
+    containers:
+      bibliogram:
+        image: quay.io/pussthecatorg/bibliogram:latest
+  install:
+    rootless: true
+    remove_all_data_for_sure: false
+  config:
+    port: 10407
+    tor:
+      enabled: false
+    website_origin: http://localhost:10407
+  # Just here for testing
+  added_in_defaults: defaults_value
+  winner: defaults
+...

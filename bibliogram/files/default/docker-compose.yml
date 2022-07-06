@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  bibliogram:
+    image: {{ bibliogram.lookup.containers.bibliogram.image }}
+    container_name: bibliogram
+    ports:
+      - "{{ bibliogram.config.port }}:{{ bibliogram.config.port }}"
+    volumes:
+      - "{{ bibliogram.lookup.paths.db }}/:/app/db/"
+      - "{{ bibliogram.lookup.paths.config}}:/app/config.js"
+    restart: unless-stopped

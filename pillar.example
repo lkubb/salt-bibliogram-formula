@@ -1,0 +1,276 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+# yamllint disable rule:comments-indentation
+---
+bibliogram:
+  install:
+      # Install rootless containers running as dedicated user.
+    rootless: true
+      # When applying `clean` states, also remove application data.
+      # Setting this to true might incur accidental data loss!
+    remove_all_data_for_sure: false
+    # For config, see https://git.sr.ht/~cadence/bibliogram/tree/master/item/src/lib/constants.js
+  config:
+      # Things that server owners _should_ change!
+      # Protocol and domain that the website can be accessed on. Images and links in RSS feeds start with this URL.
+      # Do NOT include a trailing slash. If you leave this as localhost, Bibliogram will not work correctly when accessed from any other device.
+      # If you are using nginx to make Bibliogram accessible on port 80/443, do NOT write a port here.
+      # For example, "https://bibliogram.art"
+    website_origin: 'http://localhost:10407'
+    # bind_ip: 0.0.0.0
+    port: 10407
+      # You MUST read /src/site/pug/privacy.pug.template before changing has_privacy_policy!
+    # has_privacy_policy: false
+      # If your instance is also available as an onion site, add the onion URL here.
+      # It should look something like "http://3gldbgtv5e4god56.onion" (no trailing slash).
+    # onion_location: null
+      # Things that server owners _could_ change if they want to.
+    tor:
+        # If false, everything else in this block has no effect.
+      enabled: false
+        # If `null`, Bibliogram will run its own Tor process instead.
+      # password: null
+        # If a password is provided, Bibliogram will connect to Tor on this port.
+        # (This is ignored when running its own Tor process.)
+      # port: 9051
+      # for:
+      #   user_html: true
+      #   timeline_graphql: false
+      #   post_graphql: false
+      #   reel_graphql: false
+      # one of: "node-fetch", "got"
+    # request_backend: node-fetch
+      # After setting your privacy policy, I suggest you read
+      # src/site/html/.well-known/dnt-policy.txt. If you comply with it
+      # change this to `true` to serve it, which will make extensions like
+      # Privacy Badger automatically whitelist the domain.
+    # does_not_track: false
+      # one of: "never", "fallback", "prefer", "onlyPreferSaved", "preferForRSS"
+    # allow_user_from_reel: fallback
+      # Whether to proxy media (images, videos, thumbnails) through Bibliogram. This is
+      # strongly recommended to protect user privacy. If proxy is turned off, some browser
+      # content blockers may break all images since they are served from Facebook domains.
+    # proxy_media:
+    #   image: true
+    #   video: true
+    #   thumbnail: true
+    # feeds:
+        # Whether feeds are enabled.
+      # enabled: true
+        # Whether to display links to feeds on pages.
+      # display_links: true
+        # Whether to display the `v!` link to validate a feed.
+      # display_validation_links: false
+        # This feed message field allows you to insert a custom message into all RSS feeds
+        # to inform users of important changes such as feeds being disabled forever on
+        # that instance.
+      # feed_message:
+      #   enabled: false
+          # If the feed message is enabled, then `id` MUST be supplied.
+          # Please set it to `bibliogram:feed_announcement/your.domain/1`
+          # replacing `your.domain` with the address of your own domain
+          # and incrementing `1` every time you make a new announcement
+          # (to make sure the IDs are unique).
+        # id: ''
+          # The timestamp that you disabled feeds at. For example, if you disabled feeds forever starting at 2020-04-01T12:00:00 UTC
+          # you should set this to 1585742400000.
+        # timestamp: 0
+          # The title of the feed item.
+        # title: Important message from Bibliogram
+          # The text of the message.
+        # message: >-
+        #   There is an important message about feeds on this Bibliogram instance.
+        #   Please visit this link to read the message:
+        # The link address.
+        # link: 'https://your.domain/feedannouncement'
+          # 2 days
+      # feed_disabled_max_age: 172800
+
+      # Themes. `file` is the filename without extension. `name` is the display name on
+      # the settings page.
+    # themes:
+    #   official:
+    #     - file: classic
+    #       name: Vanilla sard
+    #     - file: blue
+    #       name: Vanilla sky
+    #     - file: discord
+    #       name: Discord dark
+    #     - file: pitchblack
+    #       name: Pitch black
+    #     - file: pussthecat.org
+    #       name: PussTheCat.org dark v1
+    #     - file: pussthecat.org-v2
+    #       name: PussTheCat.org dark v2
+        # To add your own theme, create an entry that replaces this array in config.js, then add your theme to it.
+        # Format: `{file: string, name: string}[]`
+      # custom: []
+      # default: classic
+        # This sets which order the themes appear in in the list on the settings page.
+      # sort:
+          # This sets whether the order is custom + official, or official + custom
+        # order: custom_first
+          # To selectively override that order, add things to this array.
+          # If you set it to `["blue", "midnight"]` then the theme with file name `blue` will be hoisted to the top
+          # the theme with file name `midnight` will be below it, and all other themes will appear below those.
+          # Format: `string[]`
+    #     manual: []
+    # default_user_settings:
+    #   language: en
+    #   rewrite_youtube: redirect.invidious.io
+    #   rewrite_twitter: nitter.net
+    # quota:
+    #   enabled: false
+    #   timeframe: 72000000
+    #   count: 50
+        # one of: "header", "address"
+    #   ip_mode: header
+    #   ip_header: x-forwarded-for
+    #   track: false
+    # user_settings:
+    #   - name: language
+    #     default: en
+    #     boolean: false
+    #     replaceEmptyWithDefault: true
+    #   - name: show_comments
+    #     default: ''
+    #     boolean: true
+    #     replaceEmptyWithDefault: true
+    #   - name: remove_trailing_hashtags
+    #     default: ''
+    #     boolean: true
+    #     replaceEmptyWithDefault: false
+    #   - name: link_hashtags
+    #     default: ''
+    #     boolean: true
+    #     replaceEmptyWithDefault: true
+    #   - name: spa
+    #     default: 'on'
+    #     boolean: true
+    #     replaceEmptyWithDefault: false
+    #   - name: infinite_scroll
+    #     default: normal
+    #     boolean: false
+    #     replaceEmptyWithDefault: true
+    #   - name: caption_side
+    #     default: left
+    #     boolean: false
+    #     replaceEmptyWithDefault: true
+    #   - name: display_alt
+    #     default: ''
+    #     boolean: true
+    #     replaceEmptyWithDefault: true
+    #   - name: timeline_columns
+    #     default: dynamic
+    #     boolean: false
+    #     replaceEmptyWithDefault: true
+    #   - name: display_top_nav
+    #     default: ''
+    #     boolean: true
+    #     replaceEmptyWithDefault: true
+    #   - name: save_data
+    #     default: automatic
+    #     boolean: false
+    #     replaceEmptyWithDefault: true
+    #   - name: rewrite_youtube
+    #     default: ''
+    #     boolean: false
+    #     replaceEmptyWithDefault: false
+    #   - name: rewrite_twitter
+    #     default: ''
+    #     boolean: false
+    #     replaceEmptyWithDefault: false
+    # featured_profiles: []
+    # use_assistant:
+        # You can still start just the assistant with npm run assistant.
+    #   enabled: false
+    #   assistants: []
+    #   offline_request_cooldown: 20*60*1000
+    #   blocked_request_cooldown: 0
+    # as_assistant:
+    #   enabled: false
+    #   require_key: false
+        # List of keys that are allowed access. You can use any string.
+        # Try `crypto.randomBytes(20).toString("hex")` to get some randomness.
+    #   keys: []
+    # caching:
+    #   image_cache_control: 'public, max-age=604800'
+    #   resource_cache_time: 1800000
+    #   instance_list_cache_time: 180000
+    #   cache_sweep_interval: 180000
+    #   csrf_time: 3600000
+    #   self_blocked_status:
+    #     user_html:
+    #       enabled: false
+    #       time: 900000
+    #     timeline_graphql:
+    #       enabled: false
+    #       time: 86400000
+    #   db_user_id: true
+    #   db_post_n3: false
+    #   db_request_history: false
+
+  lookup:
+    rootgroup: root
+    compose:
+      create_pod: null
+      pod_args: null
+      project_name: bibliogram
+      remove_orphans: true
+      service:
+        container_prefix: null
+        ephemeral: true
+        pod_prefix: null
+        restart_policy: on-failure
+        separator: null
+        stop_timeout: null
+    paths:
+      base: /opt/containers/bibliogram
+      compose: docker-compose.yml
+      config_bibliogram: bibliogram.env
+      config: config.js
+      db: db
+    user:
+      groups: []
+      home: null
+      name: bibliogram
+      shell: /usr/sbin/nologin
+      uid: null
+    containers:
+      bibliogram:
+        image: quay.io/pussthecatorg/bibliogram:latest
+
+  tofs:
+      # The files_switch key serves as a selector for alternative
+      # directories under the formula files directory. See TOFS pattern
+      # doc for more info.
+      # Note: Any value not evaluated by `config.get` will be used literally.
+      # This can be used to set custom paths, as many levels deep as required.
+    files_switch:
+      - any/path/can/be/used/here
+      - id
+      - roles
+      - osfinger
+      - os
+      - os_family
+
+      # All aspects of path/file resolution are customisable using the options below.
+      # This is unnecessary in most cases; there are sensible defaults.
+      # Default path: salt://< path_prefix >/< dirs.files >/< dirs.default >
+      # I.e.: salt://bibliogram/files/default
+      # path_prefix: template_alt
+      # dirs:
+      #   files: files_alt
+      #   default: default_alt
+      # The entries under `source_files` are prepended to the default source files
+      # given for the state
+    source_files:
+      Bibliogram compose file is managed:
+        - docker-compose_alt.yml
+        - docker-compose_alt.yml.j2
+      bibliogram environment file is managed:
+        - bibliogram_alt.env
+        - bibliogram_alt.env.j2
+      Bibliogram config file is managed:
+        - config_alt.js
+        - config_alt.js.j2
