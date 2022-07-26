@@ -33,6 +33,9 @@ Bibliogram user session is not initialized at boot:
   compose.lingering_managed:
     - name: {{ bibliogram.lookup.user.name }}
     - enable: false
+    - onlyif:
+      - fun: user.info
+        name: {{ bibliogram.lookup.user.name }}
 
 Bibliogram user account is absent:
   user.absent:
@@ -40,6 +43,9 @@ Bibliogram user account is absent:
     - purge: {{ bibliogram.install.remove_all_data_for_sure }}
     - require:
       - Bibliogram is absent
+    - retry:
+        attempts: 5
+        interval: 2
 
 {%- if bibliogram.install.remove_all_data_for_sure %}
 

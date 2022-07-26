@@ -22,6 +22,8 @@ Bibliogram user session is initialized at boot:
   compose.lingering_managed:
     - name: {{ bibliogram.lookup.user.name }}
     - enable: {{ bibliogram.install.rootless }}
+    - require:
+      - user: {{ bibliogram.lookup.user.name }}
 
 Bibliogram paths are present:
   file.directory:
