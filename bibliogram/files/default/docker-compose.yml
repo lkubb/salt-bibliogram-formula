@@ -6,6 +6,10 @@ services:
     container_name: bibliogram
     ports:
       - "{{ bibliogram.config.port }}:{{ bibliogram.config.port }}"
+{%- if bibliogram.install.autoupdate %}
+    labels:
+      - io.containers.autoupdate=registry
+{%- endif %}
     volumes:
       - "{{ bibliogram.lookup.paths.db }}/:/app/db/"
       - "{{ bibliogram.lookup.paths.config}}:/app/config.js"

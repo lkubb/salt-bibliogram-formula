@@ -8,6 +8,18 @@
 include:
   - {{ sls_config_clean }}
 
+{%- if bibliogram.install.autoupdate_service %}
+
+Podman autoupdate service is disabled for Bibliogram:
+{%-   if bibliogram.install.rootless %}
+  compose.systemd_service_disabled:
+    - user: {{ bibliogram.lookup.user.name }}
+{%-   else %}
+  service.disabled:
+{%-   endif %}
+    - name: podman-auto-update.timer
+{%- endif %}
+
 Bibliogram is absent:
   compose.removed:
     - name: {{ bibliogram.lookup.paths.compose }}

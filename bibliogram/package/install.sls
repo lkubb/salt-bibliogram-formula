@@ -71,3 +71,15 @@ Bibliogram is installed:
     - require:
       - user: {{ bibliogram.lookup.user.name }}
 {%- endif %}
+
+{%- if bibliogram.install.autoupdate_service is not none %}
+
+Podman autoupdate service is managed for Bibliogram:
+{%-   if bibliogram.install.rootless %}
+  compose.systemd_service_{{ "enabled" if bibliogram.install.autoupdate_service else "disabled" }}:
+    - user: {{ bibliogram.lookup.user.name }}
+{%-   else %}
+  service.{{ "enabled" if bibliogram.install.autoupdate_service else "disabled" }}:
+{%-   endif %}
+    - name: podman-auto-update.timer
+{%- endif %}
