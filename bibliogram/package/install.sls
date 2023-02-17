@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{%- set tplroot = tpldir.split('/')[0] %}
+{%- set tplroot = tpldir.split("/")[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as bibliogram with context %}
 {%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
 
@@ -35,11 +34,28 @@ Bibliogram paths are present:
     - require:
       - user: {{ bibliogram.lookup.user.name }}
 
+{%- if bibliogram.install.podman_api %}
+
+Bibliogram podman API is enabled:
+  compose.systemd_service_enabled:
+    - name: podman
+    - user: {{ bibliogram.lookup.user.name }}
+    - require:
+      - Bibliogram user session is initialized at boot
+
+Bibliogram podman API is available:
+  compose.systemd_service_running:
+    - name: podman
+    - user: {{ bibliogram.lookup.user.name }}
+    - require:
+      - Bibliogram user session is initialized at boot
+{%- endif %}
+
 Bibliogram compose file is managed:
   file.managed:
     - name: {{ bibliogram.lookup.paths.compose }}
-    - source: {{ files_switch(['docker-compose.yml', 'docker-compose.yml.j2'],
-                              lookup='Bibliogram compose file is present'
+    - source: {{ files_switch(["docker-compose.yml", "docker-compose.yml.j2"],
+                              lookup="Bibliogram compose file is present"
                  )
               }}
     - mode: '0644'

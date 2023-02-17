@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 # vim: ft=yaml
 # yamllint disable rule:comments-indentation
+# yamllint disable rule:line-length
 ---
 bibliogram:
   install:
@@ -25,7 +25,8 @@ bibliogram:
     website_origin: 'http://localhost:10407'
     # bind_ip: 0.0.0.0
     port: 10407
-      # You MUST read /src/site/pug/privacy.pug.template before changing has_privacy_policy!
+      # You MUST read /src/site/pug/privacy.pug.template
+      # before changing has_privacy_policy!
     # has_privacy_policy: false
       # If your instance is also available as an onion site, add the onion URL here.
       # It should look something like "http://3gldbgtv5e4god56.onion" (no trailing slash).
@@ -78,7 +79,8 @@ bibliogram:
           # and incrementing `1` every time you make a new announcement
           # (to make sure the IDs are unique).
         # id: ''
-          # The timestamp that you disabled feeds at. For example, if you disabled feeds forever starting at 2020-04-01T12:00:00 UTC
+          # The timestamp that you disabled feeds at. For example, if you disabled
+          # feeds forever starting at 2020-04-01T12:00:00 UTC
           # you should set this to 1585742400000.
         # timestamp: 0
           # The title of the feed item.
@@ -108,8 +110,8 @@ bibliogram:
     #       name: PussTheCat.org dark v1
     #     - file: pussthecat.org-v2
     #       name: PussTheCat.org dark v2
-        # To add your own theme, create an entry that replaces this array in config.js, then add your theme to it.
-        # Format: `{file: string, name: string}[]`
+        # To add your own theme, create an entry that replaces this array in config.js,
+        # then add your theme to it. Format: `{file: string, name: string}[]`
       # custom: []
       # default: classic
         # This sets which order the themes appear in in the list on the settings page.
@@ -117,8 +119,9 @@ bibliogram:
           # This sets whether the order is custom + official, or official + custom
         # order: custom_first
           # To selectively override that order, add things to this array.
-          # If you set it to `["blue", "midnight"]` then the theme with file name `blue` will be hoisted to the top
-          # the theme with file name `midnight` will be below it, and all other themes will appear below those.
+          # If you set it to `["blue", "midnight"]` then the theme with file name `blue`
+          # will be hoisted to the top the theme with file name `midnight` will be below
+          # it, and all other themes will appear below those.
           # Format: `string[]`
     #     manual: []
     # default_user_settings:

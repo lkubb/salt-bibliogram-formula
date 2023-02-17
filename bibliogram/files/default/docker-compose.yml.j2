@@ -12,5 +12,5 @@ services:
 {%- endif %}
     volumes:
       - "{{ bibliogram.lookup.paths.db }}/:/app/db/"
-      - "{{ bibliogram.lookup.paths.config}}:/app/config.js"
+      - "{{ bibliogram.lookup.paths.config }}:/app/config.js"
     restart: unless-stopped
