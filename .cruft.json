@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/lkubb/salt-template-formula-compose",
-  "commit": "97cd1b30d1525efd53961d1b7f365dbccb69d37e",
+  "commit": "d261bbd33723b1b8df5d67d58918868e3d70d76b",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -21,7 +21,7 @@
       "project_name": "bibliogram",
       "containers": "bibliogram",
       "git_username": "lkubb",
-      "_lookup": {
+      "lookup": {
         "containers": {
           "bibliogram": {
             "image": "quay.io/pussthecatorg/bibliogram:latest"
@@ -32,7 +32,7 @@
           "db": "db"
         }
       },
-      "_settings": {
+      "settings": {
         "config": {
           "port": 10407,
           "tor": {

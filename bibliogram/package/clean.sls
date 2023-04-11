@@ -51,7 +51,7 @@ Bibliogram compose file is absent:
 
 Bibliogram podman API is unavailable:
   compose.systemd_service_dead:
-    - name: podman
+    - name: podman.socket
     - user: {{ bibliogram.lookup.user.name }}
     - onlyif:
       - fun: user.info
@@ -59,7 +59,7 @@ Bibliogram podman API is unavailable:
 
 Bibliogram podman API is disabled:
   compose.systemd_service_disabled:
-    - name: podman
+    - name: podman.socket
     - user: {{ bibliogram.lookup.user.name }}
     - onlyif:
       - fun: user.info

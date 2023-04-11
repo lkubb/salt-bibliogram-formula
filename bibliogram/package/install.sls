@@ -38,14 +38,14 @@ Bibliogram paths are present:
 
 Bibliogram podman API is enabled:
   compose.systemd_service_enabled:
-    - name: podman
+    - name: podman.socket
     - user: {{ bibliogram.lookup.user.name }}
     - require:
       - Bibliogram user session is initialized at boot
 
 Bibliogram podman API is available:
   compose.systemd_service_running:
-    - name: podman
+    - name: podman.socket
     - user: {{ bibliogram.lookup.user.name }}
     - require:
       - Bibliogram user session is initialized at boot
