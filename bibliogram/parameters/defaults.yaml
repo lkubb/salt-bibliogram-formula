@@ -48,6 +48,11 @@ values:
     tor:
       enabled: false
     website_origin: http://localhost:10407
+  tofs:
+    files_switch:
+      - id
+      - roles
+      - os_family
   # Just here for testing
   added_in_defaults: defaults_value
   winner: defaults

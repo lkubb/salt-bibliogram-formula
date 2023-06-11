@@ -2,7 +2,7 @@
 
 {%- set tplroot = tpldir.split("/")[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as bibliogram with context %}
-{%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
+{%- from tplroot ~ "/libtofsstack.jinja" import files_switch with context %}
 
 Bibliogram user account is present:
   user.present:
@@ -54,14 +54,16 @@ Bibliogram podman API is available:
 Bibliogram compose file is managed:
   file.managed:
     - name: {{ bibliogram.lookup.paths.compose }}
-    - source: {{ files_switch(["docker-compose.yml", "docker-compose.yml.j2"],
-                              lookup="Bibliogram compose file is present"
+    - source: {{ files_switch(
+                    ["docker-compose.yml", "docker-compose.yml.j2"],
+                    config=bibliogram,
+                    lookup="Bibliogram compose file is present",
                  )
               }}
     - mode: '0644'
     - user: root
     - group: {{ bibliogram.lookup.rootgroup }}
-    - makedirs: True
+    - makedirs: true
     - template: jinja
     - makedirs: true
     - context:
