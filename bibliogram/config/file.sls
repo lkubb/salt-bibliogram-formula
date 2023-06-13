@@ -34,8 +34,10 @@ Bibliogram environment files are managed:
 Bibliogram config file is managed:
   file.managed:
     - name: {{ bibliogram.lookup.paths.config }}
-    - source: {{ files_switch(['config.js', 'config.js.j2'],
-                              lookup='Bibliogram config file is managed',
+    - source: {{ files_switch(
+                    ["config.js", "config.js.j2"],
+                    config=bibliogram,
+                    lookup="Bibliogram config file is managed",
                  )
               }}
     - mode: '0644'
