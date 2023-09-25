@@ -34,3 +34,4 @@ Bibliogram service is running:
 {%- endif %}
     - watch:
       - Bibliogram is installed
+      - sls: {{ sls_config_file }}

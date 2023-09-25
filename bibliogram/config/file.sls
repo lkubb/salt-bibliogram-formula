@@ -26,7 +26,7 @@ Bibliogram environment files are managed:
     - template: jinja
     - require:
       - user: {{ bibliogram.lookup.user.name }}
-    - watch_in:
+    - require_in:
       - Bibliogram is installed
     - context:
         bibliogram: {{ bibliogram | json }}
@@ -47,7 +47,5 @@ Bibliogram config file is managed:
     - template: jinja
     - require:
       - user: {{ bibliogram.lookup.user.name }}
-    - watch_in:
-      - Bibliogram is installed
     - context:
         bibliogram: {{ bibliogram | json }}
