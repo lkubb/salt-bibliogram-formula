@@ -43,7 +43,7 @@ Bibliogram config file is managed:
     - mode: '0644'
     - user: root
     - group: {{ bibliogram.lookup.user.name }}
-    - makedirs: True
+    - makedirs: true
     - template: jinja
     - require:
       - user: {{ bibliogram.lookup.user.name }}
