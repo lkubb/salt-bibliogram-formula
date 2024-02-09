@@ -11,6 +11,6 @@ services:
       - io.containers.autoupdate=registry
 {%- endif %}
     volumes:
-      - "{{ bibliogram.lookup.paths.db }}/:/app/db/"
-      - "{{ bibliogram.lookup.paths.config }}:/app/config.js"
+      - {{ bibliogram.lookup.paths.db }}/:/app/db/:Z
+      - {{ bibliogram.lookup.paths.config }}:/app/config.js:Z
     restart: unless-stopped

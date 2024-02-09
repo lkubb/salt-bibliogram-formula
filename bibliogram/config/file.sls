@@ -41,7 +41,7 @@ Bibliogram config file is managed:
                  )
               }}
     - mode: '0644'
-    - user: root
+    - user: {{ bibliogram.lookup.user.name }}
     - group: {{ bibliogram.lookup.user.name }}
     - makedirs: true
     - template: jinja
